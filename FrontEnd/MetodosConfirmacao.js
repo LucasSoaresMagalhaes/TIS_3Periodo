@@ -1,94 +1,66 @@
-var db_contato = {
-    data: [
-        {
-            nome: "Maria",
-            email: "Maria321@gmail.com",
-            senha: "senhaForte",
-            foto: "",
-            medico: "0"
-        },
-        {
-            nome: "Jao",
-            email: "jao321@gmail.com",
-            senha: "senhaForte2",
-            foto: "",
-            medico: "0"
-        }],    addContato: function (contato) {
-            this.data.push(contato);
-        }
-}
 
-
-function logar() {
-    for (i = 0; i < db_contato.data.length; i++) {
-
-        if (db_contato.data[i].email == document.querySelector("#EmailEntrar").value && db_contato.data[i].senha == document.querySelector("#SenhaEntrar").value) {
-            alert("Bom dia " + db_contato.data[i].nome)
-            return true;
-        }
-    }
-    alert("E-mail ou senha incorretos")
-    return false;
-}
-
-function confirmarDados() {
-    for (i = 0; i < db_contato.data.length; i++) {
-        if (db_contato.data[i].email == document.querySelector("#EmailEntrar").value && db_contato.data[i].senha == document.querySelector("#SenhaEntrar").value) {
-            alert("Bom dia " + db_contato.data[i].nome)
-            return true;
-        }
-    }
-    alert("E-mail ou senha incorretos")
-    return false;
-}
-
+/**
+ * Confere se os campos foram preenchidos corretamente e chama a função para gerar o objeto conta.
+ * @returns Retorna um erro se os campos estiverem incorretos e um objeto usuário se as contas estiverem corretas
+ */
 function confirmarCriacao() {
 
-    email1 = document.querySelector("#emailCriar1").value;
-    email2 = document.querySelector("#emailCriar2").value;
-    senha1 = document.querySelector("#senhaCriar1").value;
-    senha2 = document.querySelector("#senhaCriar2").value;
+    const email1 = document.getElementById("emailCriar1");
+    const email2 = document.getElementById("emailCriar2");
+    const senha1 = document.getElementById("senhaCriar1");
+    const senha2 = document.getElementById("senhaCriar2");
+    const labelEmail = document.getElementById("labelConfirmEmail");
+    const labelSenha = document.getElementById("labelConfirmSenha");
+
     TesteOk = true;
 
-    if (!confirmarDados(email1, email2)) {
-        alert("E-mails não conferem")
+    if (email1.value != email2.value) {
+        console.log("E-mails não conferem");
+        labelEmail.innerHTML = '<div class="error-message">Os e-mails não coincidem.</div>';
+        labelEmail.classList.add('has-error');
         TesteOk = false;
     }
-
-    for (i = 0; i < db_contato.data.length; i++) {
-
-        if (email1 == db_contato.data[i].email) {
-            alert("E-mail já existente")
-            TesteOk = false;
-        }
-
+    else if (email1.value != '' && email2.value != ''){
+        console.log("E-mails conferem");
+        labelEmail.innerHTML = "E-mails conferem";
+        labelEmail.classList.remove('has-error');
     }
-    if (!confirmarDados(senha1, senha2)) {
-        alert("Senhas não conferem")
+
+    if (senha1.value != senha2.value) {
+        console.log("Senhas não conferem");
+        labelSenha.innerHTML = '<div class="error-message">As senhas não coincidem.</div>';
+        labelSenha.classList.add('has-error');
         TesteOk = false;
+    }
+    else if (senha1.value != '' && senha2.value != '') {
+        labelSenha.innerHTML = "Senhas conferem";
+        labelSenha.classList.remove('has-error');
+        console.log("Senhas conferem");
 
     }
 
-    return TesteOk;
+    if (TesteOk) {
+        gerarConta();
+    }
+
+    email2.addEventListener("input", confirmarCriacao);
+    senha2.addEventListener("input", confirmarCriacao);
 
 }
 
-function confirmarDados(elemento1, elemento2) {
+/**
+ * 
+ * @returns Retorna um objeto conta conta a ser inserida no banco de dados
+ */
+function gerarConta() {
 
-    if (elemento1 == elemento2) {
-        return true;
-    }
-    return false;
-
-}
-
-function criarContato() {
     var nome = document.getElementById("nomeCriar").value;
     var email = document.getElementById("emailCriar2").value;
     var senha = document.getElementById("senhaCriar2").value;
-    var foto = ""
-    var medico = "";
-    var novoContato = { nome: nome, email: email, senha: senha, foto: foto, medico: medico };
-    db_contato.addContato(novoContato);
-    alert("Contato criado com sucesso!");
+    var foto = "";
+    var type = "";
+    var novaConta = { nome: nome, email: email, senha: senha, foto: foto, type: type };
+
+    return novaConta;
 }
+
