@@ -53,7 +53,7 @@ function gerarConta() {
     var email = document.getElementById("emailCriar2").value;
     var senha = document.getElementById("senhaCriar2").value;
     //var foto = "";
-    var type = "";
+    var type = document.querySelector('input[name=flexRadioDefault]:checked').value;
     var novaConta = {
         "email": email,
         "name": nome,
@@ -61,13 +61,12 @@ function gerarConta() {
         "type": type
     };
     console.log('Gerou conta!')
-
     return novaConta;
 }
 
 function cadastrarUsuario() {
     var httpRequest = new XMLHttpRequest();
-    var url = ' https://65a7-2804-14c-5bb3-8d8e-94c2-1c4b-5cf2-bbe7.sa.ngrok.io/users'
+    var url = ' https://b48d-2804-14c-5bb3-8d8e-e42b-7a14-7ec3-c56a.sa.ngrok.io/users'
     httpRequest.open('POST', url, true)
     httpRequest.setRequestHeader('Content-Type', 'application/json')
     httpRequest.onload = () => {
