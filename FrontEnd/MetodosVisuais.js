@@ -5,7 +5,6 @@ function mostrarLayoutCriarConta() {
 
 }
 
-
 function mostrarLayoutLogin() {
     document.getElementById("Login").style.display = 'block';
     document.getElementById("CriarConta").style.display = 'none';
