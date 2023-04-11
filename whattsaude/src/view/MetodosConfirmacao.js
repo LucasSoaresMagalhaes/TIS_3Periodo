@@ -66,7 +66,7 @@ function gerarConta() {
 
 function cadastrarUsuario() {
     var httpRequest = new XMLHttpRequest();
-    var url = ' https://b48d-2804-14c-5bb3-8d8e-e42b-7a14-7ec3-c56a.sa.ngrok.io/users'
+    var url = 'http://localhost:3333/users/users'
     httpRequest.open('POST', url, true)
     httpRequest.setRequestHeader('Content-Type', 'application/json')
     httpRequest.onload = () => {
@@ -78,4 +78,32 @@ function cadastrarUsuario() {
     }
     data = JSON.stringify(gerarConta())
     httpRequest.send(data)
+}
+function dadosLogin(){
+    var email = document.getElementById("EmailEntrar").value;
+    var password = document.getElementById("SenhaEntrar").value;
+    var dadosLogin = {
+        "email": email,
+        "password": password
+    }
+    return dadosLogin
+
+}
+
+function buscarUsuario(){
+    var httpRequest = new XMLHttpRequest();
+    var url = 'http://localhost:3333/users/login'
+    httpRequest.open('POST', url, true)
+    httpRequest.setRequestHeader('Content-Type', 'application/json')
+    httpRequest.onload = () =>{
+       if(httpRequest.status == 200){
+         return true
+         
+       }
+       else {
+        return false
+       }
+    }
+    data = JSON.stringify(dadosLogin())
+    httpRequest.send(data);
 }
