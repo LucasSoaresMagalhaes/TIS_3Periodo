@@ -66,7 +66,7 @@ function gerarConta() {
 
 function cadastrarUsuario() {
     var httpRequest = new XMLHttpRequest();
-    var url = 'http://localhost:3333/users/users'
+    var url = 'http://localhost:3333/users'
     httpRequest.open('POST', url, true)
     httpRequest.setRequestHeader('Content-Type', 'application/json')
     httpRequest.onload = () => {
@@ -97,10 +97,11 @@ function buscarUsuario(){
     httpRequest.setRequestHeader('Content-Type', 'application/json')
     httpRequest.onload = () =>{
        if(httpRequest.status == 200){
-         return true
-         
+        window.location.href ='http://127.0.0.1:5500/TIS_3Periodo/whattsaude/src/view/index.html'
+        return true
        }
        else {
+        window.location.href ='http://127.0.0.1:5500/TIS_3Periodo/whattsaude/src/view/login.html'
         return false
        }
     }

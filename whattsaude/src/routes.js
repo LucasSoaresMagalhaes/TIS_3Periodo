@@ -8,8 +8,14 @@ const routes = new Router()
 routes.post('/users', UserController.store)
 
 routes.post('/users/login',auth.authenticate('local', { failureRedirect: '/login', failureMessage: true }) ,(req, res) => {
-    const {email, password} = req.body
-    return res.json(email)
+    return res.json({message: 'Usuário autenticado'})
+})
+
+routes.post('/logout', (req, res, next)=>{
+    req.logout((err) => {
+        if (err) {return next(err)}
+        res.json({message:'Usuário deslogado'})
+    })
 })
 
 export default routes
