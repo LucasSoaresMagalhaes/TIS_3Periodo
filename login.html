@@ -34,15 +34,15 @@
                 <h3>Crie sua conta:</h3>
                 <div class="mb-3">
                     <label for="e-mail" class="form-label">E-mail</label>
-                    <input type="text" class="form-control" id="emailCriar1" placeholder="Insira seu e-mail">
+                    <input type="email" class="form-control" id="emailCriar1" placeholder="Insira seu e-mail">
                 </div>
                 <div class="mb-3">
-                    <label for="e-mail" class="form-label">Confirmação do E-mail</label>
-                    <input type="text" class="form-control" id="emailCriar2" placeholder="Insira seu e-mail novamente">
+                    <label for="e-mail" id="labelConfirmEmail" class="form-label">Confirmação do E-mail</label>
+                    <input type="email" class="form-control" id="emailCriar2" placeholder="Insira seu e-mail novamente">
                 </div>
                 <div class="mb-3">
                     <label for="e-mail" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="nomeCriar" placeholder="Insira seu e-mail novamente">
+                    <input type="text" class="form-control" id="nomeCriar" placeholder="Insira aqui seu nome">
                 </div>
 
                 <div class="mb-3">
@@ -51,31 +51,27 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="senha2" class="form-label">Confirmação da senha</label>
+                    <label for="senha2" id="labelConfirmSenha" class="form-label">Confirmação da senha</label>
                     <input type="password" class="form-control" id="senhaCriar2" placeholder="Insira sua senha novamente">
                     
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="paciente"checked>
                     <label class="form-check-label" for="flexRadioDefault1">
                         Paciente
-
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="medico">
+                    <label class="form-check-label" for="flexRadioDefault2" >
                         Medico
                     </label>
                 </div>
-
-
-                <button type="button" onclick="criarContato()" class="btn btn-success">Registrar</button>
-
+                <button type="button" onclick="confirmarCriacao()" class="btn btn-success">Registrar</button>
             </div>
 
             <div id="Login">
-                <h3>Entre na sua conte:</h3>
+                <h3>Entre na sua conta:</h3>
                 <div class="mb-3">
                     <label for="e-mail" class="form-label">E-mail</label>
                     <input type="text" class="form-control" id="EmailEntrar" placeholder="Insira seu e-mail">
@@ -85,7 +81,7 @@
                     <label for="senha2" class="form-label">Senha</label>
                     <input type="password" class="form-control" id="SenhaEntrar" placeholder="Insira sua senha">
                 </div>
-                <button type="button" onclick="logar()" class="btn btn-success">Entrar na conta</button>
+                <button type="button" onclick="buscarUsuario()" class="btn btn-success">Entrar na conta</button>
             </div>
             <div class="botoes">
                 <button onclick="mostrarLayoutLogin()" type="button" class="btn btn-success">Já possui uma
