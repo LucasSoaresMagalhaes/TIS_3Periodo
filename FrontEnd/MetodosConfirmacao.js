@@ -4,62 +4,72 @@
  * @returns Retorna um erro se os campos estiverem incorretos e um objeto usuário se as contas estiverem corretas
  */
 function confirmarCriacao() {
-
+    // get the input values
     const email1 = document.getElementById("emailCriar1");
     const email2 = document.getElementById("emailCriar2");
+    const nome = document.getElementById("nomeCriar");
     const senha1 = document.getElementById("senhaCriar1");
     const senha2 = document.getElementById("senhaCriar2");
     const labelEmail = document.getElementById("labelConfirmEmail");
     const labelSenha = document.getElementById("labelConfirmSenha");
 
-    TesteOk = true;
+    var testeCampos = false;
+    var testeSenha = false;
+    var testeEmail = false;
 
-    if (email1.value != email2.value) {
-        console.log("E-mails não conferem");
-        labelEmail.innerHTML = '<div class="error-message">Os e-mails não coincidem.</div>';
-        labelEmail.classList.add('has-error');
-        TesteOk = false;
+    // check if any of the fields are empty
+    if (email1.value === "" || email2.value === "" || nome.value === "" || senha1.value === "" || senha2.value === "") {
+        alert("Por favor, preencha todos os campos!");
+        testeCampos = false;
     }
-    else if (email1.value != '' && email2.value != ''){
-        console.log("E-mails conferem");
-        labelEmail.innerHTML = "E-mails conferem";
-        labelEmail.classList.remove('has-error');
+    else {
+        testeCampos = true;
     }
-
-    if (senha1.value != senha2.value) {
-        console.log("Senhas não conferem");
-        labelSenha.innerHTML = '<div class="error-message">As senhas não coincidem.</div>';
-        labelSenha.classList.add('has-error');
-        TesteOk = false;
+    // check if the emails match
+    if (email1.value !== email2.value) {
+        alert("Preencha os campos corretamente")
+        labelEmail.innerHTML = "E-mails não confirmam";
+        labelEmail.classList.add("has-error");
+        testeEmail = false;
     }
-    else if (senha1.value != '' && senha2.value != '') {
-        labelSenha.innerHTML = "Senhas conferem";
-        labelSenha.classList.remove('has-error');
-        console.log("Senhas conferem");
-
+    else {
+        labelEmail.innerHTML = "Confirmação do E-mail";
+        labelEmail.classList.remove("has-error");
+        testeEmail = true;
     }
 
-    if (TesteOk) {
-        gerarConta();
+    // check if the passwords match
+    if (senha1.value !== senha2.value) {
+        alert("As senhas não correspondem!");
+        labelSenha.classList.add("has-error");
+
+        testeSenha = false;
+    }
+    else {
+        labelSenha.classList.remove("has-error");
+        testeSenha = true;
     }
 
-    email2.addEventListener("input", confirmarCriacao);
-    senha2.addEventListener("input", confirmarCriacao);
-
+    if (testeCampos && testeEmail && testeSenha) {
+        usuario = gerarConta()
+        return usuario;
+    }
 }
+
+
 
 /**
  * 
  * @returns Retorna um objeto conta conta a ser inserida no banco de dados
  */
 function gerarConta() {
-
+    console.log("entrou")
     var nome = document.getElementById("nomeCriar").value;
-    var email = document.getElementById("emailCriar2").value;
+    var Email = document.getElementById("emailCriar2").value;
     var senha = document.getElementById("senhaCriar2").value;
     var foto = "";
-    var type = "";
-    var novaConta = { nome: nome, email: email, senha: senha, foto: foto, type: type };
+    var type = document.querySelector('input[name="flexRadioDefault"]:checked').value;
+    var novaConta = { nome: nome, Email: Email, senha: senha, foto: foto, tipo: type };
 
     return novaConta;
 }
