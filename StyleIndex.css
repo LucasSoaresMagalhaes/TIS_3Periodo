@@ -39,7 +39,10 @@ body {
 }
 
 a.btn-primary {
-
     background-color: rgb(35, 45, 182);
+}
 
+#paginaBusca{
+    display: flex;
+    flex-wrap: wrap;
 }

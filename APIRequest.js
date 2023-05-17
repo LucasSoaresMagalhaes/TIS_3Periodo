@@ -1,59 +1,78 @@
 
-function request(tipo, UF, Busca) {
+function request() {
     var request = new XMLHttpRequest();
     const key = 7279695826;
-    request.open('GET', 'https://www.consultacrm.com.br/api/index.php?tipo=crm&uf=' + UF + '&q=' + Busca + '&chave=' + key + '&destino=xml', true);
+    const UF = document.getElementById("UFmedico").value;
+    const Nome = document.getElementById("nomeMedico").value;
+
+    request.open('GET', 'https://www.consultacrm.com.br/api/index.php?tipo=crm&uf=' + UF + '&q=' + Nome + '&chave=' + key + '&destino=xml', true);
 
     request.onload = function () {
         if (request.status >= 200 && request.status < 400) {
             var xmlDoc = request.responseXML;
 
-            // Get a list of all item elements
+            // Transforma em uma lista de itens
             var itemList = xmlDoc.getElementsByTagName("item");
-
-            // Loop through each item element and retrieve its child elements
-            for (var i = 0; i < itemList.length; i++) {
-                var item = itemList[i];
-
-                // Get the tipo element's text content
-                var tipo = item.getElementsByTagName("tipo")[0].textContent;
-
-                // Get the numero element's text content
-                var numero = item.getElementsByTagName("numero")[0].textContent;
-
-                // Get the nome element's text content
-                var nome = item.getElementsByTagName("nome")[0].textContent;
-
-                // Get the uf element's text content
-                var uf = item.getElementsByTagName("uf")[0].textContent;
-
-                // Get the profissao element's text content
-                var profissao = item.getElementsByTagName("profissao")[0].textContent;
-
-                // Get the situacao element's text content
-                var situacao = item.getElementsByTagName("situacao")[0].textContent;
-
-                // Do something with the retrieved data (e.g. output it to the console)
-                console.log("Item #" + i);
-                console.log("Tipo: " + tipo);
-                console.log("Numero: " + numero);
-                console.log("Nome: " + nome);
-                console.log("UF: " + uf);
-                console.log("Profissão: " + profissao);
-                console.log("Situação: " + situacao);
+            if (itemList.length > 0) {
+                // Loop entre todos os elementos
+                for (var i = 0; i < itemList.length; i++) {
+                    var item = itemList[i];
+                    adicionarCard(item);
+                }
+                var data = request.responseText;
+                console.log(data);
             }
-            var data = request.responseText;
-            console.log(data);
+            else{
+                alert("Não foram encontrados médicos com o nome " + Nome + " e UF " + UF)
+            }
         } else {
-            // We reached our target server, but it returned an error
+            // PROBLEMA NO SERVIDOR
             console.error("Error: request status code is " + request.status);
         }
     };
 
     request.onerror = function () {
-        // There was a connection error of some sort
+        // ERRO DE CONEXÃO
         console.error("Error: connection error");
     };
 
     request.send();
+}
+
+
+
+function adicionarCard(item) {
+
+
+    // Conteudo do campo tipo
+    var tipo = item.getElementsByTagName("tipo")[0].textContent;
+
+    // Conteudo do campo numero
+    var numero = item.getElementsByTagName("numero")[0].textContent;
+
+    // Conteudo do campo nome
+    var nome = item.getElementsByTagName("nome")[0].textContent;
+
+    // Conteudo do campo uf
+    var uf = item.getElementsByTagName("uf")[0].textContent;
+
+    // Conteudo do campo profissao
+    var profissao = item.getElementsByTagName("profissao")[0].textContent;
+
+    // Conteudo do campo situacao
+    var situacao = item.getElementsByTagName("situacao")[0].textContent;
+
+    var paginaBusca = document.getElementById("paginaBusca");
+
+    paginaBusca.innerHTML += `<div class="cardmedico">
+    <div class="card" style="width: 18rem;">
+        <i id="ICONE_IMAGEM" class="fa-solid fa-comments"></i>
+        <p>UF:` + uf + `</p>
+        <p>CRM: `+ numero + ` </p>
+        <p>NOME: `+ nome + ` </p>
+        <p>PROFISSÃO: `+ profissao + ` </p>
+        <p>SITUAÇÃO: `+ situacao + ` </p>
+    </div>
+</div>`
+
 }

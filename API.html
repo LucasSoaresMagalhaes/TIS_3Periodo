@@ -18,9 +18,41 @@
 
 <body>
     <header>
-        <!-- place navbar here -->
+        <div id="cartaoUsuario" class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="img\wpp.png" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Pesquisar médico</h5>
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">Nome:</label>
+                            <input type="text" class="form-control" name="" id="nomeMedico" aria-describedby="helpId"
+                                placeholder="Digite o nome de seu médico aqui">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="" class="form-label">Selecione o Estado do seu médico:</label>
+                            <select class="form-select form-select-lg" name="" id="UFmedico">
+                                <option selected value="">UF do médico</option>
+                                <option value="MG">MG</option>
+                                <option value="">Istanbul</option>
+                                <option value="">Jakarta</option>
+                            </select>
+                        </div>
+
+                        <a name="" id="" class="btn btn-primary" onclick="request()" role="button">Buscar</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
-    <main>
+    <main id="paginaBusca">
+
+        <!--AQUI ESTAO OS CARDS DOS MEDICOS-->
 
     </main>
     <footer>
