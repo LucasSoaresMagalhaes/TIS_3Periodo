@@ -46,3 +46,15 @@ a.btn-primary {
     display: flex;
     flex-wrap: wrap;
 }
+
+.mapcontainer{
+    background-color: white;
+    border-radius: 2%;;
+
+}
+
+.logoMapa{
+    width: 20%;
+    margin-left: 40%;
+}
+
