@@ -1,4 +1,3 @@
-
 /**
  * Confere se os campos foram preenchidos corretamente e chama a função para gerar o objeto conta.
  * @returns Retorna um erro se os campos estiverem incorretos e um objeto usuário se as contas estiverem corretas
@@ -73,6 +72,7 @@ function gerarConta() {
 }
 
 function cadastrarUsuario() {
+    
     var httpRequest = new XMLHttpRequest();
     var url = 'http://localhost:3333/users'
     httpRequest.open('POST', url, true)
