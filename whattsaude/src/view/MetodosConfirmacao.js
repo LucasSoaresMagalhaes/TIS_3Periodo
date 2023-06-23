@@ -50,8 +50,7 @@ function confirmarCriacao() {
     }
 
     if (testeCampos && testeEmail && testeSenha) {
-        usuario = gerarConta()
-        return usuario;
+        cadastrarUsuario();
     }
 }
 
