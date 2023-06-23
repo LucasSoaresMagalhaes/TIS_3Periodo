@@ -109,7 +109,7 @@ function buscarUsuario(){
         return true
        }
        else {
-        window.location.href ='login.html'
+        window.alert("Login ou senha incorretos!")
         return false
        }
     }
