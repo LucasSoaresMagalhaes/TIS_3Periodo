@@ -1,0 +1,121 @@
+<<<<<<<< HEAD:Style.css
+/* INICIO LOGIN*/
+* {
+    padding: 1%;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+p,
+h1,
+h2,
+h3,
+label {
+    color: white;
+}
+
+.logo {
+    padding: 0%;
+    display: flex;
+    justify-content: center;
+}
+
+#logo {
+    width: 20%;
+}
+
+.textoPrincipal {
+    text-align: center;
+}
+
+.formularios {
+    width: 30%;
+    margin: auto;
+}
+
+.botoes {
+    margin-left: auto;
+    text-align: center;
+}
+
+#Login,
+#CriarConta {
+    display: none;
+}
+
+.has-error {
+
+    color: red;
+    text-shadow: black;
+
+}
+
+/*FIM LOGIN*/
+========
+/* INICIO LOGIN*/
+* {
+    padding: 1%;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+p,
+h1,
+h2,
+h3,
+label {
+    color: white;
+}
+
+.logo {
+    padding: 0%;
+    display: flex;
+    justify-content: center;
+}
+
+#logo {
+    width: 20%;
+}
+
+.textoPrincipal {
+    text-align: center;
+}
+
+.formularios {
+    width: 30%;
+    margin: auto;
+}
+
+.botoes {
+    margin-left: auto;
+    text-align: center;
+}
+
+#Login,
+#CriarConta {
+    display: none;
+}
+
+.has-error {
+
+    color: red;
+    text-shadow: black;
+
+}
+
+/*FIM LOGIN*/
+>>>>>>>> 1c08defcff7417fd045d42944555264832c02f6f:whattsaude/src/view/Style.css
