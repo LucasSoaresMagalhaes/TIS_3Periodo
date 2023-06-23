@@ -1,18 +1,23 @@
-*{
+/* INICIO LOGIN*/
+* {
     padding: 1%;
 }
 
-html{
+html {
     min-height: 100%;
 }
 
-body{
+body {
     background-repeat: no-repeat;
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 }
 
-p,h1,h2,h3, label{
- color: white;
+p,
+h1,
+h2,
+h3,
+label {
+    color: white;
 }
 
 .logo {
@@ -39,6 +44,16 @@ p,h1,h2,h3, label{
     text-align: center;
 }
 
-#Login, #CriarConta{
+#Login,
+#CriarConta {
     display: none;
 }
+
+.has-error {
+
+    color: red;
+    text-shadow: black;
+
+}
+
+/*FIM LOGIN*/
